@@ -1,0 +1,19 @@
+class Proxee < Formula
+  desc "Simple local reverse proxy server"
+  homepage "https://github.com/andrewhao/proxee"
+  version "0.1.0"
+
+  on_macos do
+    url "https://github.com/andrewhao/proxee/releases/download/v#{version}/darwin_amd64.tar.gz"
+    url "https://github.com/andrewhao/proxee/releases/download/v#{version}/proxee_v#{version}_x86_64-apple-darwin.zip"
+    sha256 "49f69fe625b0338e7780ef6dc666e0d91bf37f5f4f7d2426a283870522a20bcb"
+  end
+
+  def install
+    bin.install "proxee"
+  end
+
+  test do
+    assert_match "proxee #{version.to_s}/", `proxee --version`.chomp
+  end
+end
